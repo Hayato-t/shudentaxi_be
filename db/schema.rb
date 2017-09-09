@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909113456) do
+ActiveRecord::Schema.define(version: 20170909134825) do
 
   create_table "feelings", force: :cascade do |t|
     t.integer "userid"
-    t.integer "like"
-    t.integer "fight"
-    t.string "comment_content"
-    t.string "comment_imgpath"
     t.decimal "comment_lat"
     t.decimal "comment_lng"
+    t.string "comment_body"
+    t.string "comment_imgpath"
+    t.integer "like"
+    t.integer "fight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
