@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userid: 1
+  like: 1
+  fight: 1
+  comment_content: MyString
+  comment_imgpath: MyString
+  comment_lat: 9.99
+  comment_lng: 9.99
+
+two:
+  userid: 1
+  like: 1
+  fight: 1
+  comment_content: MyString
+  comment_imgpath: MyString
+  comment_lat: 9.99
+  comment_lng: 9.99

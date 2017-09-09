@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userid: 
+  here_lat: 9.99
+  here_lng: 9.99
+  obj_lat: 9.99
+  obj_lng: 9.99
+
+two:
+  userid: 
+  here_lat: 9.99
+  here_lng: 9.99
+  obj_lat: 9.99
+  obj_lng: 9.99

@@ -1,0 +1,2 @@
+class Taxiallotment < ApplicationRecord
+end
