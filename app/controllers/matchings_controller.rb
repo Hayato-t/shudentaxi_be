@@ -1,4 +1,5 @@
 class MatchingsController < ApplicationController
+  protect_from_forgery with: :null_session
   def add
     new_matching = Matching.new
     new_matching.userid = params[:userid].to_i
