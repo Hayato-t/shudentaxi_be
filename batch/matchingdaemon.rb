@@ -12,11 +12,11 @@ class MatchingBatch
           print("samedestination_group found!\n")
           samedestination_group.members += 1
           if samedestination_group.members == 3
-            samedestination_group.user3 = person.userid
+            samedestination_group.userid3 = person.userid
           elsif samedestination_group.members == 2
-          samedestination_group.user2 = person.userid
+          samedestination_group.userid2 = person.userid
           else
-            samedestination_group.user1 = person.userid
+            samedestination_group.userid1 = person.userid
           end
           samedestination_group.save!
           person.paired_flag = 1
