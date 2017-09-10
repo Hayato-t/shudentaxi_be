@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/matching', to: 'matchings#add'
   get '/matching/:userid', to: 'matchings#ismatched'
   post '/feeling', to: 'feelings#add'
+  post '/feeling/vote', to: 'feelings#vote'
 end

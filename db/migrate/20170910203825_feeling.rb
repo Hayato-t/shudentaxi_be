@@ -1,4 +1,4 @@
-class CreateFeelings < ActiveRecord::Migration[5.1]
+class Feeling < ActiveRecord::Migration[5.1]
   def change
     create_table :feelings do |t|
       t.integer :userid
@@ -6,9 +6,8 @@ class CreateFeelings < ActiveRecord::Migration[5.1]
       t.decimal :comment_lng
       t.string :comment_body
       t.string :comment_imgpath
-      t.integer :like
-      t.integer :fight
-
+      t.integer :like, default: 0
+      t.integer :fight, default: 0
       t.timestamps
     end
   end

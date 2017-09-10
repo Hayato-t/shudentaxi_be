@@ -40,6 +40,20 @@ class FeelingsController < ApplicationController
     render :json => {comments: comments_in_range, result: true}
     
   end
+  def vote
+    target_comment = Feeling.where(id: params[:comment_id].to_i).first
+    if target_comment.blank?
+      render :json => {result: false}
+    else
+      if params[:type] == 'like'
+        target_comment.like = target_comment.like + 1
+      elsif params[:type] == 'fight'
+        target_comment.fight = target_comment.fight + 1
+      end
+      target_comment.save!
+      render :json => {result: true, comment_id: target_comment.id, comment_lat: target_comment.comment_lat, comment_lng: target_comment.comment_lng, comment_body: target_comment.comment_body, comment_like: target_comment.like, comment_fight: target_comment.fight}
+    end
+  end
 
   private
   def get_latlng_distance_from_radius(radius)
