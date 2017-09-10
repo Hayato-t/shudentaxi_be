@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 20170909134825) do
     t.string "taxi_number"
     t.decimal "taxi_lat"
     t.decimal "taxi_lng"
+    t.decimal "obj_lat"
+    t.decimal "obj_lng"
+    t.integer "report"
+    t.integer "members"
+    t.integer "close_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,13 +46,14 @@ ActiveRecord::Schema.define(version: 20170909134825) do
     t.decimal "here_lng"
     t.decimal "obj_lat"
     t.decimal "obj_lng"
+    t.integer "paired_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "taxiallotments", force: :cascade do |t|
-    t.decimal "pos_lat"
-    t.decimal "pos_lng"
+    t.decimal "lat"
+    t.decimal "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

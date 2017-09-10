@@ -1,0 +1,12 @@
+require File.dirname(__FILE__) + '/../config/boot'
+require 'rubygems'
+require 'daemons'
+
+Daemons.run{
+  "#{RAILS_ROOT}/script/runner",
+  :app_name => "rails_daemon",
+  :dir_mode => :script,
+  :dir => "../log",
+  :multiple => true,
+  :keep_pid_files => false
+}
