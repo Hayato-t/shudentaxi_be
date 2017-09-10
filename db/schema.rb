@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170909134825) do
     t.integer "report"
     t.integer "members"
     t.integer "close_flag"
+    t.integer "delete_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
