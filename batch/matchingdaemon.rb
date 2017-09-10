@@ -5,7 +5,7 @@ class MatchingBatch
       print("start batch\n")
       waiting = Matching.where(paired_flag: 0).all
       all_taxis = Taxiallotment.all
-      matchedgroups = Matchedgroup.where(close_flag: 0).where(delete_flag: 0).all
+      matchedgroups = Matchedgroup.where(closed_flag: 0).where(delete_flag: 0).all
       waiting.each do |person|
         samedestination_group = matchedgroups.find{|group| latlng_to_distance(person.obj_lat,person.obj_lng,group.taxi_lat,group.taxi_lng) <= 1 and latlng_to_distance(person.obj_lat,person.obj_lng,group.obj_lat,group.obj_lng) <= 1}
         if samedestination_group.present? and samedestination_group.members < 3
@@ -46,7 +46,7 @@ class MatchingBatch
                 new_matchedgroup.taxi_lng = near_taxi.lng
                 new_matchedgroup.obj_lat = (a.obj_lat + b.obj_lat)/2
                 new_matchedgroup.obj_lng = (a.obj_lng + b.obj_lng)/2
-                new_matchedgroup.close_flag = 0
+                new_matchedgroup.closed_flag = 0
                 new_matchedgroup.delete_flag = 0
                 new_matchedgroup.report = 0
                 new_matchedgroup.save!
@@ -62,15 +62,22 @@ class MatchingBatch
 
       # matched group flag
       all_matchedgroups = Matchedgroup.where(delete_flag: 0).all
+      print(all_matchedgroups)
       all_matchedgroups.each do |group|
         print("checking matchedgroup")
-        if group.created_at + 20 < Time.now || group.member == 3
-          group.close_flag = 1
+        print(group.created_at)
+        print(group.created_at + 20 < Time.now)
+        print(group.closed_flag)
+        print(group.closed_flag == 0)
+        if (group.created_at + 20 < Time.now or group.members == 3) and group.closed_flag == 0
+          print("change closedflag")
+          group.closed_flag = 1
           group.save!
         end
         if group.report == group.members
           group.delete_flag = 1
           group.save!
+        end
       end
       sleep SLEEP
     end
