@@ -62,13 +62,8 @@ class MatchingBatch
 
       # matched group flag
       all_matchedgroups = Matchedgroup.where(delete_flag: 0).all
-      print(all_matchedgroups)
       all_matchedgroups.each do |group|
         print("checking matchedgroup")
-        print(group.created_at)
-        print(group.created_at + 20 < Time.now)
-        print(group.closed_flag)
-        print(group.closed_flag == 0)
         if (group.created_at + 20 < Time.now or group.members == 3) and group.closed_flag == 0
           print("change closedflag")
           group.closed_flag = 1
