@@ -1,7 +1,7 @@
 class FeelingsController < ApplicationController
   protect_from_forgery with: :null_session
   def add
-    radius = 1
+    radius = 3
     new_feeling = Feeling.new
     new_feeling.userid = params[:userid].to_i
     new_feeling.comment_body = params[:comment_body]
@@ -54,7 +54,7 @@ class FeelingsController < ApplicationController
   end
 
   def getcomment
-    radius = 1
+    radius = 3
     print(params[:lat])
     print(params[:lng])
     if params[:lat].blank? or params[:lng].blank?
