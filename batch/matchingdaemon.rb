@@ -39,7 +39,7 @@ class MatchingBatch
                 new_matchedgroup.userid1 = a.userid
                 new_matchedgroup.userid2 = b.userid
                 taxi_points = Taxiallotment.all
-                taxi_points.sort_by{|point| latlng_to_distance((a.here_lat + b.here_lat)/2,(a.here_lng + b.here_lng)/2,point.lat,point.lng)}
+                taxi_points.sort_by{|point| latlng_to_distance((a.here_lat + b.here_lat)/2,(a.here_lng + b.here_lng)/2,point.lat,point.lng)}.reverse
                 near_taxi = taxi_points[0]
                 new_matchedgroup.taxi_number = '111-111'
                 new_matchedgroup.taxi_lat = near_taxi.lat
